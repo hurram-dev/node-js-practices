@@ -1,8 +1,22 @@
 {
   "type": "module",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
+    "jest": "^30.2.0",
+    "pm2": "^6.0.14",
+    "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
+    "tsc-esm-fix": "^3.1.2",
     "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "./node_modules/.bin/tsc --project tsconfig.json && ./node_modules/.bin/tsc-esm-fix",
+    "start": "npm run build && ./node_modules/.bin/pm2 start ./dist/practical-task-3/index.js --name server",
+    "stop": "./node_modules/.bin/pm2 stop server"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.14"
   }
 }

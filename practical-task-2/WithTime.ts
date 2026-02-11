@@ -1,4 +1,4 @@
-import { EventEmitter } from "./EventEmitter.ts";
+import { EventEmitter } from "./EventEmitter";
 
 class WithTime extends EventEmitter {
 

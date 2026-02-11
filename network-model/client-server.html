@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Server</title>
+</head>
+
+<body>
+    <div class="theme-doc-markdown markdown"><h1>Client-Server Model</h1>
+<p>As an engineer, you likely encounter the Client-Server model frequently in your work. Let's take a moment to revisit its fundamental definitions and refresh our understanding of key concepts.</p>
+<p><strong>The client</strong> represents an application that makes requests to the server. It could be a web or mobile application as well as any other component that interacts with the server. The client is responsible for initiating requests and processing the response. It's important to note that the term "client" is not limited to UI-based applications. In the microservices world, a client can refer to a backend application as well.</p>
+<p><strong>The server</strong> is the central component that receives requests from clients, processes them, and generates responses. It stores and manages resources, executes business logic, and handles data storage and retrieval. The server is responsible for processing client requests, performing necessary computations or database operations, and returning the appropriate responses.</p>
+<p><img decoding="async" loading="lazy" alt="Client-Server Communication with different technologies" src="/node-gmp/assets/images/rest-client-server-dark-5c340a2668ee658da91a3074fffef7fe.svg#dark-mode-only" width="808" height="311" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Client-Server Communication with different technologies" src="/node-gmp/assets/images/rest-client-server-6477cbb251ac5ad9aea6cf8b5204377c.svg#light-mode-only" width="808" height="311" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="stateful-vs-stateless-architecture">Stateful vs Stateless architecture<a href="#stateful-vs-stateless-architecture" class="hash-link" aria-label="Direct link to Stateful vs Stateless architecture" title="Direct link to Stateful vs Stateless architecture">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="stateful">Stateful<a href="#stateful" class="hash-link" aria-label="Direct link to Stateful" title="Direct link to Stateful">​</a></h3>
+<p>In a stateful architecture, the server maintains the state or context of a client's interactions.</p>
+<ul>
+<li>The server retains information about the client's session or past interactions, which allows it to maintain continuity across multiple requests.</li>
+<li>The server can store session data, authentication tokens or any other relevant information.</li>
+<li>This approach often requires the server to allocate resources to manage and store the client's state, which may impact scalability and resource utilization.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
+<p>Let's imagine a scenario where we have a website dedicated to pet management, allowing users to store and organize information about their pets in one central location.</p>
+<p>Here's how the session management is implemented if it is stateful application:</p>
+<ul>
+<li>When the user performs an action for the first time, the server creates a unique session identifier for the user.</li>
+<li>This identifier is stored on the server and associated with the user's session. As the user continues to browse and interact with the website, each request they make includes the session identifier.</li>
+<li>The server uses it to authenticate requests.</li>
+<li>The session remains active until the user logs out, closes the browser, or a certain period of inactivity occurs.</li>
+</ul>
+<p>In the picture below the client sends a POST request to update the animal with session identifier (1). Servers checks if there is a session for that user (2) and if true - acknowledges it (3). Server updates animal entity (4-5) and sends the response back to client (6).</p>
+<p><img decoding="async" loading="lazy" alt="Stateful example" src="/node-gmp/assets/images/rest-stateful-132448332ba8ba35db511be7ecc5fee1.svg#light-mode-only" width="848" height="537" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Stateful example" src="/node-gmp/assets/images/rest-stateful-dark-1eff79648733ca41522f6e66422f069f.svg#dark-mode-only" width="868" height="584" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="stateless">Stateless<a href="#stateless" class="hash-link" aria-label="Direct link to Stateless" title="Direct link to Stateless">​</a></h3>
+<p>In a stateless architecture, the server does not retain any information about the client's past interactions or session state.</p>
+<ul>
+<li>Each client request is self-contained and includes all the necessary information for the server to process it without relying on previous requests.</li>
+<li>The server treats each request independently and does not maintain any client-specific state between requests.</li>
+<li>Stateless architectures are typically more scalable and easier to manage as they don't require server resources for maintaining session information.</li>
+<li>To maintain client context on server, clients often include relevant information (such as tokens, session IDs, or authentication credentials) in each request.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-1">Example<a href="#example-1" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h4>
+<p>Unlike in the previous example, there is no state stored on the server. Server treats client requests like a "new" ones each time. So the client should provide all information needed to a server to be able to process the request.</p>
+<p>In the picture below client sends a <code>PUT</code> request indicating which resource it would like to update e.g. <code>/animals/8</code>. It provides the body with full information to update (1). Server performs actions needed in a database for a specific animal (2-3) and sends the response back to client (4).</p>
+<p><img decoding="async" loading="lazy" alt="Stateless example" src="/node-gmp/assets/images/rest-stateless-992473f55ab255daa7e1ff004751ba7c.svg#light-mode-only" width="848" height="628" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Stateless example" src="/node-gmp/assets/images/rest-stateless-dark-82a1617b9ca228d16c110c3cf5e8e046.svg#dark-mode-only" width="868" height="632" class="img_ev3q"></p>
+<p>It's important to note that stateless interactions do not mean that the server cannot maintain any state at all. The server can still have its internal state, such as databases or caches, to store and retrieve data. However, the client is responsible for providing all the necessary contextual information within each request, allowing the server to process it independently without relying on previous interactions.</p></div>
+</body>
+
+</html>

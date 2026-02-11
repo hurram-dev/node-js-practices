@@ -3,9 +3,9 @@
   "compilerOptions": {
     // File Layout
     "rootDir": ".",
-    "outDir": "./dist",
-    "moduleResolution": "node",
-    "baseUrl": "./",
+    "outDir": "dist",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
     "esModuleInterop": true,
 
     // Environment Settings
@@ -14,7 +14,7 @@
     "target": "esnext",
     // For nodejs:
     // "lib": ["esnext"],
-    "types": ["node"],
+    "types": ["node", "jest"],
     // and npm install -D @types/node
 
     // Other Outputs
@@ -25,8 +25,8 @@
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
+    "noEmit": false,
+    "allowJs": true,
 
     // Style Options
     // "noImplicitReturns": true,
@@ -39,8 +39,8 @@
     // Recommended Options
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": false,
+    "verbatimModuleSyntax": false,
+    "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
