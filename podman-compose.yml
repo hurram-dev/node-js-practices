@@ -1,0 +1,11 @@
+version: '3'
+services:
+  mongo:
+    image: 'docker.io/library/mongo'
+    container_name: 'test-nosql'
+    restart: 'always'
+    ports: 
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'admin123'  
